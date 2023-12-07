@@ -13,7 +13,12 @@ services:
     working_dir: /usr/src/app
     environment:
       NODE_ENV: development
-    command: npm start  # Replace with your start command if different
-  
+    # command: npm start  # Replace with your start command if different
+    # command: nodemon --watch /usr/src/app -e js,html --verbose server.js
+
+# 
+# need a volumne called node_modules so that it will not be overwritten when
+# mounting local host volumn to app directory in the container.
+#
 volumes:
   node_modules:
