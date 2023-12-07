@@ -1,0 +1,122 @@
+version: '3.7'
+
+services:
+  socket:
+    container_name: socket
+    build: './socket'
+    restart: 'no'
+    # environment:
+      # - VIRTUAL_HOST=socket.stevian.local
+      # - VIRTUAL_PORT=3000
+    #  - LETSENCRYPT_HOST=socket.64zbit.com
+    #  - LETSENCRYPT_EMAIL=doug@64zbit.com
+    ports:
+      - 3000:3000
+    # networks:
+    #  - backend
+    #  - proxy
+    volumes:
+      # - ../dev_volumes/public_html/soc:/usr/src/app
+      - ./socket:/app
+    # command: node server.js
+    command: /bin/bash
+
+    # command: /bin/bash 
+    # command: nodemon --watch /usr/src/app -e js,html --verbose index.js
+  # exp:
+  #   container_name: exp
+  #   build: './express'
+  #   restart: always
+  #   ports:
+  #     - 3001:3001
+  #   networks:
+  #     - backend
+  #   volumes:
+  #     - ../dev_volumes/public_html/exp:/usr/src/app
+  #   command: /bin/bash 
+  # node:
+  #   container_name: node
+  #   build: './node'
+  #   restart: always
+  #   ports:
+  #     - 3000:3000
+  #   networks:
+  #     - backend
+  #   volumes:
+  #     - ../dev_volumes/public_html/node:/usr/src/app
+  #   command: /bin/bash 
+  #   # node index.js
+  # apache:
+  #   container_name: apache
+  #   build: './apache'
+  #   restart: always
+  #   environment:
+  #     - VIRTUAL_HOST=dev.64zbit.com,play.64zbit.com
+  #     - VIRTUAL_PORT=80
+  #     - LETSENCRYPT_HOST=dev.64zbit.com,play.64zbit.com
+  #     - LETSENCRYPT_EMAIL=doug@64zbit.com
+    # ports:
+    #   - 8080:80
+    #   - 4043:443
+    # networks: 
+    #   #- frontend
+    #   - backend
+    #   - proxy
+    # volumes:
+    #   - ../dev_volumes/public_html/apache:/usr/local/apache2/htdocs
+    #   # - ../dev_volumes/cert/:/usr/local/apache2/cert/       
+    # depends_on:
+    #   - php
+    #   - mysql 
+  # php:
+  #   container_name: php
+  #   build: './php'
+  #   restart: always
+  #   networks: 
+  #     - backend
+  #   volumes:
+  #     - ../dev_volumes/public_html/apache:/usr/local/apache2/htdocs
+  #     # - ../dev_volumes/tmp:/usr/local/tmp
+  # mysql:
+  #   container_name: mysql
+  #   build: './mysql'
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #   # open port if need to access from an external source, like adminer from another container
+  #   # ports:
+  #   #   - 3306:3306
+  #   networks:
+  #     - backend
+  #     - frontend
+  #   volumes:
+  #     - ../dev_volumes/database:/var/lib/mysql
+  #     - ../dev_volumes/database:/var/log/mysql
+  # phpmyadmin:
+    # container_name: phpmyadmin
+    # image: phpmyadmin
+    # restart: always
+    # # ports:
+    # #   - 8000:80
+    # networks:
+    #    - frontend
+    #    - proxy
+    # environment:
+    #   - VIRTUAL_HOST=zsql.64zbit.com
+    #   - VIRTUAL_PORT=80
+    #   - LETSENCRYPT_HOST=zsql.64zbit.com
+    #   - LETSENCRYPT_EMAIL=doug@64zbit.com
+    #   - PMA_HOST=mysql
+    #   - PMA_USER=admin
+    #   - PMA_PASSWORD=admin
+    #   # VIRTUAL_HOST: zsql.64zbit.com
+    #   # VIRTUAL_PORT: 80
+    #   # PMA_HOST: mysql
+    #   # PMA_USER: admin
+    #   # PMA_PASSWORD: admin
+# networks: 
+#   backend:
+#   frontend:
+  # proxy:
+  #   external: true
+  #   name: nginx-proxy
