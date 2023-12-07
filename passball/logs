@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Run the docker logs command for the specified container name
+docker logs passball -t --details --since 30m

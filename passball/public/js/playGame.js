@@ -148,12 +148,13 @@ class playGame extends Phaser.Scene {
     }
 
     getdebugMessage() {
-        let out = 'dont worry help is on the way';
+        let out = 'dont worry help is on the way yay!';
         out += '\n window.widthxheight = ' + window.innerWidth + "x" + window.innerHeight;
         out += '\n game.widthxheight = ' + game.config.width + "x" + game.config.height;
         out += '\n game.FPS = ' + game.fps;
         out += '\n counter = ' + myCounter;
         out += '\n connectedUsers = ' + myPacket.connectedUsers;
+        out += '\n message = ' + myPacket.message;
         //out += '\n msg = ' + myPacket.message;
         out += '\n time = ' + this.time;
         out += '\n frame = ' + this.frame;

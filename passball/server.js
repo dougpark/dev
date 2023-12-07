@@ -8,7 +8,9 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 let counter = 0;
-let connectedUsers = 0;
+let connectedUsers = 0; 
+const { dateCST } = require('./utils/dateCST');
+
 
 console.log('chat starting now');
 
@@ -23,6 +25,11 @@ app.get('/', (req, res) => {
   console.log('client connecting...');
     res.sendFile(__dirname + '/index.html');
 });
+
+app.get('/ball', (req, res) => {
+    console.log('ball client connecting...');
+      res.sendFile(__dirname + '/public/ball.html');
+  });
 
 io.on('connection', (socket) => {
     connectedUsers++;
@@ -61,7 +68,7 @@ function getStatus() {
     packet = {
         action: 'petCat',
         counter: counter,
-        message: 'The Cat Responds ' + Date(),
+        message: 'The Cat Responds ' + dateCST(),
         connectedUsers: connectedUsers
     }
     io.emit('chat message', JSON.stringify(packet));
@@ -77,7 +84,7 @@ function initGameInterval() {
 }
 
 initGameInterval();
-
+ 
 http.listen(port, () => {
-    console.log(Date() + ' socket demo: listening on port *:' + port);
+    console.log(dateCST() + ' socket demo: listening on port *:' + port);
 });

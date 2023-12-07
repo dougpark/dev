@@ -11,3 +11,12 @@ RUN npm install
 # CMD ["npm","start"]
 # CMD ["nodemon", "server.js"]
 CMD ["nodemon", "--ext", "js,html", "server.js"]
+
+
+# helpful
+# 
+# open a terminal in the container
+# docker exec -it passball /bin/bash
+#
+# display container log
+# docker logs passball
