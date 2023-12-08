@@ -16,7 +16,7 @@ console.log('chat starting now');
 
 app.use(express.static('./public'));
 
-// dont use bodyParser for this one
+// dont use bodyParser for this one what
 // app.use(bodyParser.urlencoded({
 //     extended: false
 // }));
